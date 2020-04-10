@@ -51,8 +51,10 @@
 
 
     End Function
-    Public Sub SetSecurityquestion()
+    Public Sub SetSecurityquestion(ByVal SecurityQuestion As String)
 
+
+        'SecurityQuestion.set
 
     End Sub
     Public Function GetSecurityAnswerString()
