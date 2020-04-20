@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.PhotoElectric_Effect.Form2
+            Me.MainForm = Global.PhotoElectric_Effect.SimulationForm
         End Sub
     End Class
 End Namespace

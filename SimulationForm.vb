@@ -20,6 +20,7 @@
     Dim VelocityTextBox As New TextBox
     Dim VelocityLabel As New Label
     Dim LoadQuestionButton As New Button
+    Dim RunButton As New Button
 
 
     Sub FrequencyScrollBarScroll(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -217,10 +218,11 @@
 
 
 
-        LoadQuestionButton.Location = New Point(366, 368)
-        LoadQuestionButton.Size = New Size(113, 80)
+        LoadQuestionButton.Location = New Point(540, 60)
+        LoadQuestionButton.Size = New Size(112, 80)
         LoadQuestionButton.Text = "Create Question"
-        AddHandler LoadQuestionButton.Click, AddressOf LoadQuestionButton_Click
+        AddHandler LoadQuestionButton.Click, AddressOf loadQuestionButton_Click
+        LoadQuestionButton.Enabled = False
 
         Me.Controls.Add(LoadquestionButton)
 
@@ -245,6 +247,7 @@
             WorkFunctionTextBox.Enabled = True ' toggle on the workfunction Textbox
             PhotonEnergyTextbox.Enabled = True ' toggle on the photonEnergy TextBox
             VelocityTextBox.Enabled = True ' toggle on the velocity TextBox
+            LoadQuestionButton.Enabled = True
             sim = New Simulation ' Create an instance of the class called sim
 
             sim.Run() ' calls the subroutine of the class called run
