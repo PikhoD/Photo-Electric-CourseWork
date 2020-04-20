@@ -180,8 +180,8 @@
         If IntensityCounter = IntensityValue Then
 
             For looper = 1 To 1
-                Randomholder = RandomNumber(6)
-                PhotonList.Add(New Photon(80 + (Randomholder * 20), looper * 50, TheColours.Redcolour, TheColours.BlueColour, TheColours.GreenColour, ScrollBarValue))
+                Randomholder = RandomNumber(9)
+                PhotonList.Add(New Photon(60 + (Randomholder * 20), looper * 50, TheColours.Redcolour, TheColours.BlueColour, TheColours.GreenColour, ScrollBarValue))
                 SimulationForm.Update()
 
             Next

@@ -21,6 +21,7 @@
     Dim VelocityLabel As New Label
     Dim LoadQuestionButton As New Button
     Dim RunButton As New Button
+    Dim FandILabel As New Label
 
 
     Sub FrequencyScrollBarScroll(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -115,7 +116,7 @@
         FrequencyScrollBar.Width = 175 'change the width of the frequency scrollbar to 175
 
         FrequencyScrollBar.Value = 50 ' change the value of frequencyscrollbar to 50
-        FrequencyScrollBar.Location = New Point(200, 30) 'change the position of the frequency scrollbar to 200,30
+        FrequencyScrollBar.Location = New Point(275, 30) 'change the position of the frequency scrollbar to 200,30
 
 
         FrequencyScrollBar.Maximum = 250 ' change the maximun value of the scrollbar to 250
@@ -130,7 +131,7 @@
         IntensityScrollBar.Width = 175 ' change the height of intensity scrollbar to 175
 
 
-        IntensityScrollBar.Location = New Point(200, 60) 'change the position of intensityscrollbar to 200,60
+        IntensityScrollBar.Location = New Point(275, 60) 'change the position of intensityscrollbar to 200,60
 
 
         IntensityScrollBar.Maximum = 15 ' change the maximun possible value of intensity scrollbar to 15
@@ -158,7 +159,7 @@
         WorkFunctionBox.Items.Add("Sodium") 'adds the word sodium as a item
 
 
-        WorkFunctionBox.Location = New Point(400, 30) 'change the position of intensityscrollbar to 200,60
+        WorkFunctionBox.Location = New Point(450, 30) 'change the position of intensityscrollbar to 200,60
 
         Me.Controls.Add(WorkFunctionBox) ' Add intensity scrollbar
 
@@ -170,23 +171,27 @@
 
         WorkFunctionTextBox.Height = 30
         WorkFunctionTextBox.Width = 140
-        WorkFunctionTextBox.Location = New Point(500, 30)
+        WorkFunctionTextBox.Location = New Point(550, 30)
         Me.Controls.Add(WorkFunctionTextBox)
         WorkFunctionTextBox.Enabled = False
 
 
-
-
         WorkFunctionLabel.Height = 30
-        WorkFunctionLabel.Width = 140
-        WorkFunctionLabel.Location = New Point(500, 10)
+        WorkFunctionLabel.Width = 170
+        WorkFunctionLabel.Location = New Point(550, 10)
         WorkFunctionLabel.Text = "Workfunction Energy"
         Me.Controls.Add(WorkFunctionLabel)
 
 
+        FandILabel.Height = 30
+        FandILabel.Location = New Point(275, 0)
+        FandILabel.Text = "Frequency and Intensity ScrollBars"
+        Me.Controls.Add(FandILabel)
+
+
         PhotonEnergyTextbox.Height = 30
         PhotonEnergyTextbox.Width = 140
-        PhotonEnergyTextbox.Location = New Point(400, 80)
+        PhotonEnergyTextbox.Location = New Point(450, 80)
         Me.Controls.Add(PhotonEnergyTextbox)
         PhotonEnergyTextbox.Enabled = False
 
@@ -196,13 +201,13 @@
 
         PhotonEnergylabel.Height = 30
         PhotonEnergylabel.Width = 120
-        PhotonEnergylabel.Location = New Point(400, 60)
+        PhotonEnergylabel.Location = New Point(450, 60)
         PhotonEnergylabel.Text = "photon Energy"
         Me.Controls.Add(PhotonEnergylabel)
 
         VelocityTextBox.Height = 30
         VelocityTextBox.Width = 140
-        VelocityTextBox.Location = New Point(400, 120)
+        VelocityTextBox.Location = New Point(450, 120)
         Me.Controls.Add(VelocityTextBox)
         VelocityTextBox.Enabled = False
 
@@ -212,14 +217,14 @@
 
         VelocityLabel.Height = 30
         VelocityLabel.Width = 120
-        VelocityLabel.Location = New Point(400, 100)
+        VelocityLabel.Location = New Point(450, 100)
         VelocityLabel.Text = " MAX Velocity"
         Me.Controls.Add(VelocityLabel)
 
 
 
-        RunButton.Location = New Point(540, 60)
-        RunButton.Size = New Size(112, 80)
+        RunButton.Location = New Point(590, 60)
+        RunButton.Size = New Size(162, 80)
         RunButton.Text = "Run"
         AddHandler RunButton.Click, AddressOf RunButton_Click
         RunButton.Enabled = False
@@ -258,9 +263,12 @@
     End Sub
 
     Private Sub SimulationForm_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles Me.KeyDown ' a sub routine called when a button is pressed
-        If e.KeyCode = Keys.Enter Then ' if the enter key is pressed then
+
+        If e.KeyCode = Keys.Enter Then
+            Dim Photonemmiter As New Lamp ' if the enter key is pressed then
+            Me.Controls.Add(Photonemmiter)
             WorkFunctionBox.Enabled = True ' toggle on the workfunction box
-            WorkFunctionTextBox.Enabled = True ' toggle on the workfunction Textbox
+        WorkFunctionTextBox.Enabled = True ' toggle on the workfunction Textbox
             PhotonEnergyTextbox.Enabled = True ' toggle on the photonEnergy TextBox
             VelocityTextBox.Enabled = True ' toggle on the velocity TextBox
             LoadQuestionButton.Enabled = True
