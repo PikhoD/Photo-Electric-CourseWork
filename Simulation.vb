@@ -6,7 +6,8 @@
     Dim PhotonList As New List(Of Photon) ' dimensions a list holding instances of a class called photon
     Dim ScrollBarValue As Integer ' dimensions a variable called scrollbarvalue
     Dim Counter As Integer ' dimensions a variable called counter
-    Dim ThreadCounter As Integer = 0 ' dimensions a variable called thread counter
+    Dim ThreadCounter As Integer = 0 ' dimensions a variable called thread counter#
+    Dim RunBool As Boolean = False
 
 
 
@@ -19,6 +20,16 @@
 
     Sub New() ' is called 
 
+
+    End Sub
+    Sub ChangeRunBool()
+        If RunBool = False Then
+            RunBool = True
+        Else
+            RunBool = False
+
+
+        End If
 
     End Sub
     Public Sub SetThreadCounter(ByVal val As Byte)
@@ -206,37 +217,40 @@
         TheColours.Redcolour = 125 ' changes a structure variable for the colours of the photon to 125
 
 
+        AddElectrons()
 
-
-        AddElectrons() ' calls a subroutine called add electrons
+        ' calls a subroutine called add electrons
         ' AddPhtons()
-        For looper = 0 To 100000000
+        For looper = 0 To 1000000000000
+            If RunBool = False Then
+                Application.DoEvents()
 
-            Dim Counter As Int64
-            If Counter = 10 Then
-                AddPhtons()
-                Counter = 0
             Else
-                Counter += 1
+                Dim Counter As Int64
+                If Counter = 10 Then
+                    AddPhtons()
+                    Counter = 0
+                Else
+                    Counter += 1
+
+
+                End If
+
+                CheckIfNothing()
+                ParticleMovement()
+                CheckCollision()
+                RegenerateElectrons()
+                Application.DoEvents()
+
+
+
 
 
             End If
 
-            CheckIfNothing()
-            ParticleMovement()
-            CheckCollision()
-            RegenerateElectrons()
-            Application.DoEvents()
-
-
-
-
-
-
 
 
         Next
-
 
 
     End Sub

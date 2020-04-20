@@ -218,20 +218,36 @@
 
 
 
-        LoadQuestionButton.Location = New Point(540, 60)
-        LoadQuestionButton.Size = New Size(112, 80)
-        LoadQuestionButton.Text = "Create Question"
-        AddHandler LoadQuestionButton.Click, AddressOf loadQuestionButton_Click
-        LoadQuestionButton.Enabled = False
+        RunButton.Location = New Point(540, 60)
+        RunButton.Size = New Size(112, 80)
+        RunButton.Text = "Run"
+        AddHandler RunButton.Click, AddressOf RunButton_Click
+        RunButton.Enabled = False
 
-        Me.Controls.Add(LoadquestionButton)
-
-
+        Me.Controls.Add(RunButton)
 
 
 
 
 
+
+
+    End Sub
+    Private Sub RunButton_Click(sender As Object, e As EventArgs)
+
+        If RunButton.Text = "Run" Then
+            RunButton.Text = "Stop"
+            sim.ChangeRunBool()
+        ElseIf RunButton.Text = "Stop" Then
+            RunButton.Text = "Run"
+            sim.ChangeRunBool()
+        End If
+
+
+        '   Dim Loadquestion As New QuestionsAndAwnsersvb()
+        '   Loadquestion.Show()
+        '     Me.Hide()
+        '   Loadquestion.LoadQuestion()
     End Sub
 
     Private Sub loadQuestionButton_Click(sender As Object, e As EventArgs)
@@ -248,6 +264,7 @@
             PhotonEnergyTextbox.Enabled = True ' toggle on the photonEnergy TextBox
             VelocityTextBox.Enabled = True ' toggle on the velocity TextBox
             LoadQuestionButton.Enabled = True
+            RunButton.Enabled = True
             sim = New Simulation ' Create an instance of the class called sim
 
             sim.Run() ' calls the subroutine of the class called run
