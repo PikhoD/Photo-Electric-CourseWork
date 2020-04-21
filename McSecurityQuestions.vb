@@ -4,7 +4,7 @@
     Sub New()
 
 
-
+        SecurityAnswer = New McSecurityAnswer
 
 
 
@@ -20,6 +20,12 @@
         Return SecurityAnswer.GetSecurityAnswerString()
 
     End Function
+
+    Sub SetSecurityAnswerString(ByVal SecAnswer As String)
+
+        SecurityAnswer.SetSecurityAnswerString(SecAnswer)
+
+    End Sub
 
 
 

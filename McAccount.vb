@@ -5,7 +5,7 @@
     End Sub
     Public Sub extractAllinfo()
         Dim amountOfAcounts As Byte
-        FileOpen(1, "F:\PhotoElectric Effect\bin\Debug\McAccountInfo.txt", OpenMode.Input)
+        FileOpen(1, "C:\Users\Daniel Pikho\Desktop\CourseWork Repo\Photo-Electric-CourseWork\bin\Debug\McAccountInfo.txt", OpenMode.Input)
         amountOfAcounts = LineInput(1)
         ReDim Preserve users(amountOfAcounts - 1)
 
@@ -14,22 +14,21 @@
 
 
 
-            For looper1 = 0 To 5
-                users(looper).SetUsernameString(LineInput(1))
+
+            users(looper).SetUsernameString(LineInput(1))
                 users(looper).SetPasswordString(LineInput(1))
-                users(looper).SetSecurityquestion(LineInput(1))
 
 
+            users(looper).SetSecurityquestionAndAnswer(LineInput(1), LineInput(1))
+            users(looper).SetSecurityquestionAndAnswer(LineInput(1), LineInput(1))
 
 
-
-            Next
 
 
 
         Next
 
-
+        FileClose(1)
 
 
 
@@ -77,13 +76,13 @@
 
     End Function
 
-    Public Sub SortUserName()
-        Dim temp As McUserName
+    Public Sub SortUserNames()
+        Dim temp As New McUserName
         For looper = 0 To users.Length - 1
-            For looper1 = 0 To users.Length - 1
+            For looper1 = 0 To users.Length - 2
 
                 If users(looper1).GetuserName > users(looper1 + 1).GetuserName Then
-                    temp = users(looper1).GetuserName
+                    temp = users(looper1)
                     users(looper1) = users(looper1 + 1)
                     users(looper1 + 1) = temp
 
@@ -93,7 +92,44 @@
 
 
     End Sub
+    Public Sub AddAnAccount(ByVal UserName As String, ByVal password As String, ByVal SecurityQuestions() As String, ByVal SecurityAnswers() As String)
+        Dim Temp As New McUserName
+        ReDim Preserve users(users.Length)
+        Temp.SetUsernameString(UserName)
+        Temp.SetPasswordString(password)
+        Temp.SetSecurityquestionAndAnswer(SecurityQuestions(0), SecurityAnswers(0))
+        Temp.SetSecurityquestionAndAnswer(SecurityQuestions(1), SecurityAnswers(1))
+        users(users.Length - 1) = Temp
+        SortUserNames()
 
+        LoadUsernames()
+
+
+
+
+    End Sub
+
+    Public Sub LoadUsernames()
+        Dim amountOfAcounts As Byte = users.Length
+        FileOpen(1, "C:\Users\Daniel Pikho\Desktop\CourseWork Repo\Photo-Electric-CourseWork\bin\Debug\McAccountInfo.txt", OpenMode.Output)
+
+        PrintLine(1, amountOfAcounts)
+        For looper = 0 To users.Length - 1
+            PrintLine(1, users(looper).GetuserName)
+            PrintLine(1, users(looper).Getpassword)
+            For looper1 = 0 To 1
+                PrintLine(1, users(looper).GetSecurityQuestionString)
+                PrintLine(1, users(looper).GetSecurityAnswerString)
+
+
+            Next
+        Next
+
+        FileClose(1)
+
+
+
+    End Sub
 
 
 End Class

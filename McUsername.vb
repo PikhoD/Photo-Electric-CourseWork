@@ -3,6 +3,9 @@
     Dim UserNameString As String
     Dim Password As McPassword
     Dim SecurityQuestions() As McSecurityQuestions
+    Dim counter As Integer = 1
+    Dim counter1 As Integer = 1
+
 
 
     Sub New()
@@ -36,33 +39,68 @@
     Public Sub SetPasswordString(ByVal pssword As String)
         Password.SetPasswordString(pssword)
     End Sub
-    Public Sub setpasswordHash(ByVal PasswordHash As String)
 
-        Password.SetPasswordHash(PasswordHash)
+
+    'Public Function GetSecurityQuestion()
+    ' Dim counter As Integer
+    '  If counter > 2 Then
+    'counter = 1
+    '   Else
+    '       SecurityQuestions(counter - 1).GetsecurityQuestionString()
+
+    '        counter += 1
+
+
+    '    End If
+
+
+    '    End Function
+    Public Sub SetSecurityquestionAndAnswer(ByVal SecurityQuestion As String, ByVal SecurityAnswer As String)
+
+
+        If counter > 2 Then
+            counter = 1
+        Else
+
+
+
+
+        End If
+        SecurityQuestions(counter - 1).SetSecurityQuestionString(SecurityQuestion)
+        SecurityQuestions(counter - 1).SetSecurityAnswerString(SecurityAnswer)
+        counter += 1
 
     End Sub
-    Public Function GetPassWordHash()
+    Public Function GetSecurityQuestionString()
 
-        Return Password.GetPasswordHash
+        If counter > 2 Then
+            counter = 1
+        Else
 
 
+
+
+
+        End If
+        SecurityQuestions(counter - 1).GetsecurityQuestionString()
+
+        counter += 1
     End Function
-    Public Function GetSecurityQuestion()
-
-
-    End Function
-    Public Sub SetSecurityquestion(ByVal SecurityQuestion As String)
-
-
-        'SecurityQuestion.set
-
-    End Sub
     Public Function GetSecurityAnswerString()
+        If counter1 > 2 Then
+            counter1 = 1
+        Else
+
+
+
+
+
+        End If
+        SecurityQuestions(counter1 - 1).GetSecurityAnswerString()
+
+        counter1 += 1
 
     End Function
-    Public Sub SetSecurityanswerString()
-
-    End Sub
 
 
 End Class

@@ -22,6 +22,7 @@
     Dim LoadQuestionButton As New Button
     Dim RunButton As New Button
     Dim FandILabel As New Label
+    Dim MetalLabel As New Label
 
 
     Sub FrequencyScrollBarScroll(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -233,7 +234,10 @@
 
 
 
-
+        MetalLabel.Height = 30
+        MetalLabel.Location = New Point(450, 10)
+        MetalLabel.Text = "Metals"
+        Me.Controls.Add(MetalLabel)
 
 
 
